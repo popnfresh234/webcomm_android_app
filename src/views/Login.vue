@@ -2,7 +2,6 @@
   <div class="flex items-center justify-center py-12 px-4 pt-24 sm:px-6 lg:px-8">
     <div class="max-w-md w-full">
       <div>
-        <h1 class="common-header">Demo App</h1>
       </div>
 
       <div class="loginArea mt-8 space-y-6" v-if="loginState === 'logout'">
@@ -22,7 +21,7 @@
               placeholder="Password" />
           </div>
         </div>
-
+        <!-- 
         <div class="flex items-center justify-between">
           <div class="flex items-center">
             <input id="remember-me" name="remember-me" type="checkbox"
@@ -31,7 +30,7 @@
               Remember me
             </label>
           </div>
-        </div>
+        </div> -->
 
         <div @click.stop="clickToLogin()">
           <button class="box-link" type="submit">
@@ -58,7 +57,7 @@ import { requestAuth, doAuth, requestReg, doDereg, login } from '@/api/api'
 import { doAuthentication } from '@/utils/fido/authentication/authentication'
 import { useStore } from 'vuex'
 import { appAlert } from '@/utils/appDialog'
-import { setRememberMe, getRememberMe, LoginStatus } from '@/utils/fastLoginUtil'
+import { setRememberMe, getRememberMe, LoginStatus, LOCAL_STORAGE_TOKEN } from '@/utils/fastLoginUtil'
 import { StatusCode } from '@/utils/fido/statusCode'
 import { ApiRespCode } from '@/api/apiRespCode'
 
@@ -71,22 +70,11 @@ export default defineComponent({
     const handleUsername = () => { store.dispatch('handleUsernameState', username.value) }
     const router = useRouter()
     const username = ref(UsernameState)
-    const password = ref(UsernameState)
+    const password = ref("Testtest112!")
     let authRequests = [] as any
     let caneclFastLogin = false
 
-
     // 記住我 功能 從llocalstorage拿值
-
-
-
-
-
-
-
-
-
-
 
 
     const rememberMe = ref(getRememberMe())
@@ -104,14 +92,17 @@ export default defineComponent({
         } else {
           // 儲存username
           handleUsername()
-          await login({
+          const res = await login({
             account: username.value,
             password: password.value
           })
+          localStorage.setItem(LOCAL_STORAGE_TOKEN, res.accessToken)
+
           // 在取消RememberMe的情況下 需檢查是否已經有註冊 如已註冊須先解綁
           if (rememberMe.value === false) {
             // TODO: 取消勾選的註銷流程
             store.dispatch('handleLoginStatus', LoginStatus.login)
+            router.push({ name: 'Home' })
           } else {
             // 先到otp 再到 裝置綁定
             store.dispatch('handleLoginStatus', LoginStatus.login)

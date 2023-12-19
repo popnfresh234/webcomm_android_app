@@ -22,8 +22,8 @@ export interface IResponseFail extends BaseResponseHeader {
   message: string;
 }
 export interface IResponse extends BaseResponse {
-  header: IResponseHeader;
-  body?: BaseResponseBody;
+  message: string;
+  accessToken: string;
 }
 
 export interface IFidoRequestHeader extends BaseRequsetHeader {

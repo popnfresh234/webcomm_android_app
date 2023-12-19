@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { LOCAL_STORAGE_TOKEN } from "@/utils/fastLoginUtil";
 // import qs from 'qs'
 import { showMessage } from "./status";
 // import { ElMessage } from 'element-plus'
@@ -221,6 +222,15 @@ export const getBalance = (
   return axiosInstanceDemo
     .post("/mobile/account", params)
     .then((res) => res.data);
+};
+
+export const getNews = (): Promise<any> => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(LOCAL_STORAGE_TOKEN)}`,
+    },
+  };
+  return axiosInstanceDemo.get("/news/all", config).then((res) => res.data);
 };
 
 // fido 註冊流程

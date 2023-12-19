@@ -18,6 +18,9 @@ export default createStore({
   actions: {
     handleLoginStatus({ commit }, loginStatus) {
       console.log("handleLoginStatus = ", loginStatus);
+      if (loginStatus === "logout") {
+        localStorage.clear();
+      }
       commit("SET_LOGINSTATUS_STATE", loginStatus);
     },
     handleUsernameState({ commit }, username) {

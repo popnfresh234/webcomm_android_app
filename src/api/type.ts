@@ -118,9 +118,15 @@ export interface IRequestAuthRequestBody {
 export interface IAuthRequests {
   authRequests: Array<IRegistrationRequest>;
 }
+
+export interface ILoginResponse {
+  message: string;
+  token: string;
+}
+
 export interface IRequestAuthResp extends BaseResponse {
   header: IResponseHeader;
-  body: IAuthRequests;
+  body: any;
 }
 
 // step 17

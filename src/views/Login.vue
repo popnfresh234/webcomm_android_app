@@ -32,10 +32,18 @@
           </div>
         </div> -->
 
-        <div @click.stop="clickToLogin()">
-          <button class="box-link" type="submit">
-            Login
-          </button>
+        <div class="button-container">
+          <div @click.stop="clickToLogin()">
+            <button class="box-link" type="submit">
+              Login
+            </button>
+          </div>
+
+          <div @click.stop="quickLogin()">
+            <button class="box-link" type="submit">
+              Quick
+            </button>
+          </div>
         </div>
       </div>
       <div class="logoutArea mt-8 space-y-6" v-else>
@@ -79,7 +87,11 @@ export default defineComponent({
 
     const rememberMe = ref(getRememberMe())
 
-
+    const quickLogin = async () => {
+      if (await checkFidoLogin()) {
+        await loginWithFido()
+      }
+    }
 
     // 正常登
     const clickToLogin = async () => {
@@ -152,7 +164,9 @@ export default defineComponent({
         console.log('doAuth')
         const res = await doAuth(authResponses)
         console.log(res.header.code)
+
         if (res.header.code === ApiRespCode.Success) {
+
           appAlert(
             'FIDO登入成功', // message
             () => {
@@ -209,6 +223,7 @@ export default defineComponent({
       username,
       password,
       clickToLogin,
+      quickLogin,
       rememberMe,
       clickToLogout,
       loginState
@@ -222,3 +237,10 @@ export default defineComponent({
 authenticator list ,fido sdk -> app // 8. getTranslation ,app -> fido sdk // 9.
 return authenticator translation ,fido sdk -> app // 10. app display
 authenticators in its manner // 登入後 第二次可快登
+
+<style>
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+</style>

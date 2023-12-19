@@ -7,15 +7,10 @@
           <div class="">Account. {{ accountInfo.email }}</div>
           <div class="">帳戶總額NT$</div>
         </div>
-        <div class="right balance text-3xl">{{formatNumber(accountInfo.balance) }}</div>
+        <div class="right balance text-3xl">{{ formatNumber(accountInfo.balance) }}</div>
       </div>
 
-      <input
-        type="tel"
-        class="input border-2 py-2"
-        placeholder="請輸入您的轉帳金額"
-        v-model="transactionAmount"
-      />
+      <input type="tel" class="input border-2 py-2" placeholder="請輸入您的轉帳金額" v-model="transactionAmount" />
     </div>
     <div class="body py-2">
       <div class="tabs justify-center">
@@ -24,13 +19,9 @@
         <a class="tab tab-bordered">約定帳號</a>
       </div>
       <div class="list">
-        <div
-          class="item flex flex-row justify-between py-2 px-1"
-          :class="{ 'bg-gray-400': chooseRemoteEmail === account.remoteEmail }"
-          v-for="account in remoteAccountList"
-          :key="account.id"
-          @click="chooseAccount(account.remoteEmail,account.name )"
-        >
+        <div class="item flex flex-row justify-between py-2 px-1"
+          :class="{ 'bg-gray-400': chooseRemoteEmail === account.remoteEmail }" v-for="account in remoteAccountList"
+          :key="account.id" @click="chooseAccount(account.remoteEmail, account.name)">
           <div>{{ account.name }}</div>
           <div>{{ account.remoteEmail }}</div>
         </div>
@@ -58,13 +49,13 @@ import { getAccountList, IAccount } from '@/utils/transferUtil'
 import { StatusCode } from '@/utils/fido/statusCode'
 
 export default defineComponent({
-  setup () {
+  setup() {
     const store = useStore()
     // 目前登入的帳號
     const UsernameState = store.getters.usernameState
 
     // 取得登入帳號資訊
-    const accountInfo = reactive({ } as IAccountResp)
+    const accountInfo = reactive({} as IAccountResp)
     const getAccountInfo = async () => {
       const res = await getBalance({ username: UsernameState })
       accountInfo.balance = res.balance
@@ -81,7 +72,7 @@ export default defineComponent({
     const chooseRemoteName = ref('')
 
     // 這邊是寫死的 濾掉當前登入的帳號
-    const remoteAccountList = getAccountList().filter((a:IAccount) => a.remoteEmail !== UsernameState)
+    const remoteAccountList = getAccountList().filter((a: IAccount) => a.remoteEmail !== UsernameState)
 
     // 選擇要匯款的帳號
     const chooseAccount = (chooseEmail: string, chooseName: string) => {
@@ -164,8 +155,8 @@ export default defineComponent({
 
         const res = await doAuth(authResponses)
         if (res.header.code === ApiRespCode.Success) {
-        // 發電文轉帳
-        // 正式情境下 轉帳電文 會等於是requestAuth 整合轉帳
+          // 發電文轉帳
+          // 正式情境下 轉帳電文 會等於是requestAuth 整合轉帳
           const res = await doTransfer()
           if (res.transferResult === 'success') {
             appAlert(
@@ -174,7 +165,7 @@ export default defineComponent({
               '元 , 給' +
               chooseRemoteEmail.value,
               () => {
-              // 重設所選金額與帳戶
+                // 重設所選金額與帳戶
                 transactionAmount.value = ''
                 chooseRemoteEmail.value = ''
               }
@@ -185,7 +176,7 @@ export default defineComponent({
         }
         // 交易後 一律重拿帳戶資訊
         await getAccountInfo()
-      } catch (error:any) {
+      } catch (error: any) {
         if (error.code === StatusCode.USER_NOT_ENROLLED) {
           appAlert('尚未註冊快登')
         }

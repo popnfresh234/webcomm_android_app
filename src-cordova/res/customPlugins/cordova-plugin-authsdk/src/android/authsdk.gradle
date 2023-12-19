@@ -1,0 +1,17 @@
+repositories{    
+    jcenter()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile 'androidx.appcompat:appcompat:1.1.0'
+    compile 'com.google.code.gson:gson:2.8.5'
+    compile 'androidx.multidex:multidex:2.0.1'
+    compile 'com.madgag.spongycastle:core:1.54.0.0'
+    compile 'com.madgag.spongycastle:prov:1.54.0.0'
+    compile 'commons-io:commons-io:2.4'
+    compile "androidx.biometric:biometric:1.1.0"
+    compile(name:'authsdk', ext:'aar')
+}

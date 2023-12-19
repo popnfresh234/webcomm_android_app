@@ -1,0 +1,41 @@
+{
+  "locale": {
+        "ios": ["en"],
+        "android": ["en"]
+    },
+  "config_ios" : {
+    "NSCameraUsageDescription" : "Webcomm FIDO need to access your camera.",
+    "NSFaceIDUsageDescription" : "Webcomm FIDO need to access your face id or touch id."
+  },
+  "config_android" : {
+    "webcomm_fido_pattern_result_text_success" : "Registering...",
+    "webcomm_fido_bio_title" : "Will be used for 「%s」",
+    "webcomm_fido_bio_cancel" : "Cancel",
+    "webcomm_fido_tx_auth_info" : "Please press confirm after confirming"
+  },
+  "app" : {
+    "webcomm_fido_pattern_reg_header_title" : "Setting Pattern Password",
+    "webcomm_fido_pattern_reg_title" : "Set your own pattern password \\n Id：%@",
+    "webcomm_fido_pattern_reg_info" : "Please draw 6~16 consecutive connection points below.",
+    "webcomm_fido_pattern_reg_info_error" : "The pattern password must be 6~16 consecutive connection points, please try again.",
+    "webcomm_fido_pattern_reg_info_confirm" : "Please draw the pattern password again",
+    "webcomm_fido_pattern_reg_info_confirm_error" : "Pattern password error, please try again",
+    "webcomm_fido_pattern_reg_footer_button_next" : "Cancel",
+    "webcomm_fido_pattern_reg_footer_button_cancel" : "Cancel",
+    "webcomm_fido_pattern_reg_reused_error" : "Can’t be the same as the last set pattern password, please try again.",
+
+    "webcomm_fido_pattern_auth_title" : "Please draw your own pattern password below\\n Id：%@",
+    "webcomm_fido_pattern_auth_info_error" : "Pattern password error, please try again",
+    "webcomm_fido_pattern_auth_footer_button_cancel" : "Cancel",
+    "webcomm_fido_pattern_auth_attempt_failed" : "User pattern lock attempt failed %d times, please try again.",
+    "webcomm_fido_pattern_auth_temp_lock" : "User pattern lock have been temporary locked out, please try again in %d s.",
+    "webcomm_fido_pattern_auth_lock_out" : "Reached the maximum number of attempts. For the security reasons, we will delete your registration data immediately.",
+
+    "webcomm_fido_touch_id_reg" : "Id：%@ \\nPlease press your fingerprint to enable this function",
+    "webcomm_fido_touch_id_auth" : "Id：%@ \\nPlease press your fingerprint for authentication",
+        
+    "webcomm_fido_tx_auth_footer_button_confirm" : "Confirm",
+    "webcomm_fido_tx_auth_footer_button_cancel" : "Cancel"
+
+  }
+}

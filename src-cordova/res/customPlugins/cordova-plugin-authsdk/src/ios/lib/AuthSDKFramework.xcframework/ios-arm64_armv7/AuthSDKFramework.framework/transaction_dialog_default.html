@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="400" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="initial-scale=1,user-scalable=no, width=device-width, height=device-height, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>交易資料</title>
+  <!-- <link rel="stylesheet" type="text/css" href="Content/css/ccapp.css"> -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<!-- <body class="auto-height" style="font-size:18px;background-color:white;">
+    
+    <br>
+    <br>
+    <table width=100% style="padding-bottom: 20px;">
+        <tr>
+            <th style="text-align:left">交易確認</th>
+        </tr>
+        <tr>
+            <th>
+                <hr>
+            </th>
+        </tr>
+        <tr>
+            <td style="text-align:left" id="content"></td>
+        </tr>
+    </table>
+    
+</body> -->
+<body class="auto-height" style="font-size:18px;background-color:white;" class="p-20">
+    <!-- <table width=100% id="txTable" class="p-20">
+        <tr>
+            <th style="color: rgb(9, 133, 198);" colspan="2">轉帳確認</th>
+        </tr>
+        <tr>
+            <th colspan="2">
+                <hr>
+            </th>
+        </tr>
+        <tr>
+            <td style="text-align:left" id="content"></td>
+        </tr>
+        <tr>
+            <th colspan="2">
+                <hr>
+            </th>
+        </tr> 
+        <tr>
+            <td style="text-align:left">轉出帳號</td>
+            <td style="text-align:right; color: rgb(9, 133, 198);" id="outacct"></td>
+        </tr>
+        <tr>
+            <td style="text-align:left">轉帳金額</td>
+            <td style="text-align:right; color: rgb(9, 133, 198);" id="amont"></td>
+        </tr>
+    </table> -->
+
+    <div class="flex flex-col p-8 font-sans">
+        <div class="text-3xl text-sky-600">轉帳確認</div>
+        <div class="flex flex-row p-2">
+            <div class="title "> 轉出帳號 : </div>
+            <div class="content text-sky-600" id="outacct"></div>
+        </div>
+        <div class="flex flex-row p-2">
+            <div class="title "> 轉帳金額 : </div>
+            <div class="content text-sky-600" id="amont"></div>
+        </div>
+    </div>
+
+</body>
+<script type="application/javascript">
+    function callJSParameter(objStr){
+        var data = JSON.parse(objStr);
+        document.getElementById("outacct").innerHTML = data.outacct;
+        document.getElementById("amont").innerHTML = data.amont;
+   }
+</script>
+
+</html>
+

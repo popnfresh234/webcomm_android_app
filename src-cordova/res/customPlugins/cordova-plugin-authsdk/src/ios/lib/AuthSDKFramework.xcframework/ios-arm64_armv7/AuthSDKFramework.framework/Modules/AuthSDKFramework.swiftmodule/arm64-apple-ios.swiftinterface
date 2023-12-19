@@ -1,0 +1,37 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthSDKFramework
+@_exported import AuthSDKFramework
+import Swift
+import UIKit
+import _Concurrency
+@_inheritsConvenienceInitializers @IBDesignable @objc @_Concurrency.MainActor(unsafe) open class FittableFontLabel : UIKit.UILabel {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var autoAdjustFontSize: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var maxFontSize: CoreGraphics.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var minFontScale: CoreGraphics.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var leftInset: CoreGraphics.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var rightInset: CoreGraphics.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var topInset: CoreGraphics.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var bottomInset: CoreGraphics.CGFloat
+  @objc @_Concurrency.MainActor(unsafe) public func setUIEdgeInsets(top: CoreGraphics.CGFloat, left: CoreGraphics.CGFloat, bottom: CoreGraphics.CGFloat, right: CoreGraphics.CGFloat)
+  @objc @_Concurrency.MainActor(unsafe) public func adjustFontSizeAfterContentSizeCategoryDidChange()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var text: Swift.String? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var frame: CoreGraphics.CGRect {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set(value)
+  }
+  @objc override dynamic open func prepareForInterfaceBuilder()
+  @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func drawText(in rect: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension UIKit.UILabel {
+  @_Concurrency.MainActor(unsafe) public func fontSizeToFit(maxFontSize: CoreGraphics.CGFloat = 25, minFontScale: CoreGraphics.CGFloat = 0.5, rectSize: CoreGraphics.CGSize? = nil)
+  @_Concurrency.MainActor(unsafe) public func fontSizeThatFits(text string: Swift.String, maxFontSize: CoreGraphics.CGFloat = 25, minFontScale: CoreGraphics.CGFloat = 0.5, rectSize: CoreGraphics.CGSize? = nil) -> CoreGraphics.CGFloat
+}

@@ -1,0 +1,18 @@
+{
+    "ios": {
+        "debug": {
+            "codeSignIdentity": "Apple Development",
+            "provisioningProfile": "243f91ff-6e75-4167-81f7-9d530df3cebd",
+            "developmentTeam": "TW8V44NSF9",
+            "packageType": "development",
+            "automaticProvisioning": false
+        },
+        "release": {
+            "codeSignIdentity": "Apple Development",
+            "provisioningProfile": "243f91ff-6e75-4167-81f7-9d530df3cebd",
+            "developmentTeam": "TW8V44NSF9",
+            "packageType": "development",
+            "automaticProvisioning": false
+        }
+    }
+}

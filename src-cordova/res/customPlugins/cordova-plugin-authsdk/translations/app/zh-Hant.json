@@ -1,0 +1,41 @@
+{
+  "locale": {
+        "ios": ["zh-Hant"],
+        "android": ["zh-rTW"]
+    },
+  "config_ios" : {
+    "NSCameraUsageDescription" : "Webcomm FIDO需要存取你的相機功能。",
+    "NSFaceIDUsageDescription" : "Webcomm FIDO需要使用你的臉部辨識或指紋辨識。"
+  },
+  "config_android" : {
+    "webcomm_fido_pattern_result_text_success" : "註冊中...",
+    "webcomm_fido_bio_title" : "將用於「%s」",
+    "webcomm_fido_bio_cancel" : "取消",
+    "webcomm_fido_tx_auth_info" : "資料確認後請按確認"
+  },
+  "app" : {
+    "webcomm_fido_pattern_reg_header_title" : "設定圖形辨識",
+    "webcomm_fido_pattern_reg_title" : "設定專屬的圖形密碼 \\n 身分證字號：%@",
+    "webcomm_fido_pattern_reg_info" : "請於下方繪製6~16連續連結點",
+    "webcomm_fido_pattern_reg_info_error" : "圖形密碼需為6~16連續連結點，請重試",
+    "webcomm_fido_pattern_reg_footer_button_next" : "下次設定",
+    "webcomm_fido_pattern_reg_footer_button_cancel" : "取消",
+    "webcomm_fido_pattern_reg_info_confirm" : "請再次繪製相同圖形",
+    "webcomm_fido_pattern_reg_info_confirm_error" : "圖形密碼錯誤，請重試",
+    "webcomm_fido_pattern_reg_reused_error" : "不可與上次設定之圖形密碼相同，請重試",
+
+    "webcomm_fido_pattern_auth_title" : "請於下方繪製專屬的圖形密碼\\n 身分證字號：%@",
+    "webcomm_fido_pattern_auth_info_error" : "圖形密碼錯誤，請重試",
+    "webcomm_fido_pattern_auth_footer_button_cancel" : "取消",
+    "webcomm_fido_pattern_auth_attempt_failed" : "您畫出的解鎖圖案已連續錯誤%d次，請稍後再試",
+    "webcomm_fido_pattern_auth_temp_lock" : "圖形密碼已鎖定，請於%d秒後稍後再試",
+    "webcomm_fido_pattern_auth_lock_out" : "已達最大錯誤次數，將清除註冊資料，請重新註冊",
+
+    "webcomm_fido_touch_id_reg" : "身分證字號：%@ \\n請按壓您的指紋用以啟用該功能",
+    "webcomm_fido_touch_id_auth" : "身分證字號：%@ \\n請按壓您的指紋用以身份驗證",
+
+    "webcomm_fido_tx_auth_footer_button_confirm" : "確認",
+    "webcomm_fido_tx_auth_footer_button_cancel" : "取消"
+
+  }
+}

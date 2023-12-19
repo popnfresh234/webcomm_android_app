@@ -1,0 +1,47 @@
+:root {
+  --label-width: 4rem;
+  --default-border-radius: 0.5rem;
+  --button-link-padding: 0.5rem;
+  --secondary-color: royalblue;
+  --secondary-color-hover: #3f5188;
+}
+
+.box-link {
+  width: 6rem;
+  border-radius: var(--default-border-radius);
+  background-color: white;
+  padding: 0.5rem;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.box-link:hover:enabled {
+  color: blue;
+}
+
+.main-content {
+  height: 100vh;
+  background-image: url(../assets/imgs/bg-mobile.svg);
+  background-size: cover;
+}
+
+.common-header {
+  color: white;
+  text-align: center;
+}
+
+.label-white {
+  color: white;
+}
+
+.hamburger {
+  color: white;
+}
+
+.navbar {
+  background-color: rgba(104, 100, 138, 0.6);
+}
+
+.hide-bg {
+  background-image: none;
+}

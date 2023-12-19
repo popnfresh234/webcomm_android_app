@@ -1,0 +1,11 @@
+framework module AuthSDKFramework {
+  umbrella header "AuthSDKFramework.h"
+
+  export *
+  module * { export * }
+}
+
+module AuthSDKFramework.Swift {
+    header "AuthSDKFramework-Swift.h"
+    requires objc
+}

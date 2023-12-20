@@ -87,7 +87,7 @@ export default defineComponent({
             let doAuthenticationResp = await doAuthentication(options)
             // step 27~33 doAuth
             // auth SDK 向 FIDO server驗證
-            const res = await doAuth(doAuthenticationResp)
+            const res = await doAuth(doAuthenticationResp, usernameState)
             if (res.header.code === ApiRespCode.Success) {
               appAlert('網銀登入成功', () => { router.replace({ name: 'Home' }) })
             } else {

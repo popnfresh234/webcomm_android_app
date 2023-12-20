@@ -38,7 +38,7 @@
               Login
             </button>
           </div>
-
+          <div class="button-spacer"></div>
           <div @click.stop="quickLogin()">
             <button class="box-link" type="submit">
               Quick
@@ -85,8 +85,6 @@ export default defineComponent({
     // 記住我 功能 從llocalstorage拿值
 
 
-    const rememberMe = ref(getRememberMe())
-
     const quickLogin = async () => {
       if (await checkFidoLogin()) {
         await loginWithFido()
@@ -97,30 +95,17 @@ export default defineComponent({
     const clickToLogin = async () => {
       console.log('login!!!!!!!!!!! ', username.value)
       try {
-        // 先確定是否已註冊快登
-        if (!caneclFastLogin && (await checkFidoLogin())) {
-          await loginWithFido()
-          // loginWithFido();
-        } else {
-          // 儲存username
-          handleUsername()
-          const res = await login({
-            account: username.value,
-            password: password.value
-          })
-          localStorage.setItem(LOCAL_STORAGE_TOKEN, res.accessToken)
+        // 儲存username
+        handleUsername()
+        const res = await login({
+          account: username.value,
+          password: password.value
+        })
+        //Store token for API access
+        localStorage.setItem(LOCAL_STORAGE_TOKEN, res.accessToken)
+        store.dispatch('handleLoginStatus', LoginStatus.login)
+        router.push({ name: 'Home' })
 
-          // 在取消RememberMe的情況下 需檢查是否已經有註冊 如已註冊須先解綁
-          if (rememberMe.value === false) {
-            // TODO: 取消勾選的註銷流程
-            store.dispatch('handleLoginStatus', LoginStatus.login)
-            router.push({ name: 'Home' })
-          } else {
-            // 先到otp 再到 裝置綁定
-            store.dispatch('handleLoginStatus', LoginStatus.login)
-            router.push({ name: 'OTP' })
-          }
-        }
       } catch (error) {
         console.error('clickToLogin error = ' + JSON.stringify(error))
         appAlert('登入失敗')
@@ -162,15 +147,15 @@ export default defineComponent({
         const authResponses = await doAuthentication(options)
         // step 17~21 電文
         console.log('doAuth')
-        const res = await doAuth(authResponses)
+        const res = await doAuth(authResponses, username.value)
         console.log(res.header.code)
-
+        console.log(res.loginResponse)
         if (res.header.code === ApiRespCode.Success) {
-
           appAlert(
             'FIDO登入成功', // message
             () => {
               // 更改狀態為登入
+              localStorage.setItem(LOCAL_STORAGE_TOKEN, res.loginResponse.accessToken);
               store.dispatch('handleLoginStatus', LoginStatus.login)
               router.push({ name: 'Home' })
             } // callback
@@ -195,12 +180,6 @@ export default defineComponent({
     onMounted(async () => {
       if (loginState.value === LoginStatus.login) {
         console.log('已登入只顯示 登出鈕')
-      } else {
-        // 判斷是否已註冊快登
-        console.log("Try Fido")
-        if (await checkFidoLogin()) {
-          await loginWithFido()
-        }
       }
     })
 
@@ -209,22 +188,12 @@ export default defineComponent({
       store.dispatch('handleLoginStatus', LoginStatus.logout)
     }
 
-    watch(rememberMe, () => {
-      console.log('watch rememberMe', rememberMe.value)
-      if (rememberMe.value === false) {
-        // 查看是否已註冊
-        // 已註冊需解綁
-        setRememberMe(false)
-      } else {
-        setRememberMe(true)
-      }
-    })
+
     return {
       username,
       password,
       clickToLogin,
       quickLogin,
-      rememberMe,
       clickToLogout,
       loginState
     }
@@ -242,5 +211,9 @@ authenticators in its manner // 登入後 第二次可快登
 .button-container {
   display: flex;
   justify-content: center;
+}
+
+.button-spacer {
+  width: 2rem;
 }
 </style>

@@ -6,7 +6,6 @@ import { showMessage } from "./status";
 import {
   ILoginRequestBody,
   IAccountRequestBody,
-  IResponse,
   IRequestRegRequestBody,
   IRequestRegResp,
   IDoRegResp,
@@ -14,6 +13,7 @@ import {
   IRequestPairAuthRequestBody,
   IRequestPairAuthResp,
   IAccountResp,
+  ILoginResponse,
 } from "./type";
 
 // {
@@ -190,7 +190,7 @@ axiosInstanceDemo.interceptors.request.use(
  * @params {ILoginRequestBody} params
  * @return {Promise}
  */
-export const login = (params: ILoginRequestBody): Promise<IResponse> => {
+export const login = (params: ILoginRequestBody): Promise<ILoginResponse> => {
   console.log("excute login");
   console.log(JSON.stringify(params));
   return axiosInstanceDemo.post("/auth/login", params).then((res) => {
@@ -319,12 +319,18 @@ export const requestAuth = (
  * @param params
  * @returns
  */
-export const doAuth = (params: string): Promise<IRequestAuthResp> => {
+export const doAuth = (
+  params: string,
+  username: string
+): Promise<IRequestAuthResp> => {
   console.log("excute doAuth");
   const authResponses = JSON.parse(params);
   const req = {
     header: mockHeader,
-    body: { authResponses },
+    body: {
+      authResponses,
+      username,
+    },
   };
   console.log("doAuthReq:");
   return axiosInstanceDemo.post("/uaf/doAuth", req).then((res) => {

@@ -21,10 +21,6 @@ export interface IResponseFail extends BaseResponseHeader {
   code: number | string;
   message: string;
 }
-export interface IResponse extends BaseResponse {
-  message: string;
-  accessToken: string;
-}
 
 export interface IFidoRequestHeader extends BaseRequsetHeader {
   appVersion: string;
@@ -121,12 +117,13 @@ export interface IAuthRequests {
 
 export interface ILoginResponse {
   message: string;
-  token: string;
+  accessToken: string;
 }
 
 export interface IRequestAuthResp extends BaseResponse {
   header: IResponseHeader;
   body: any;
+  loginResponse: ILoginResponse;
 }
 
 // step 17

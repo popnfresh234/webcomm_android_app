@@ -129,7 +129,7 @@ td {
 }
 
 tr:nth-child(even) {
-  background-color: white;
+  background-color: var(--light-text-color);
 }
 
 tr:nth-child(odd) {
@@ -139,7 +139,7 @@ tr:nth-child(odd) {
 tr:first-child {
   text-align: center;
   background-color: #686868;
-  color: white;
+  color: var(--light-text-color);
 }
 
 .fixed-block {
@@ -153,3 +153,4 @@ tr:first-child {
   height: 50vh;
 }
 </style>
+

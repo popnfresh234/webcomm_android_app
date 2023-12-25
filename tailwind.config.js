@@ -1,14 +1,17 @@
 module.exports = {
-  purge: ['./public/**/*.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  purge: ["./public/**/*.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {}
+    colors: {
+      "light-text-color": "#fdf6e3",
+    },
+    extend: {},
   },
   variants: {
-    extend: {}
+    extend: {},
   },
   plugins: [
-    require('daisyui')
+    require("daisyui"),
     // require('@tailwindcss/forms')
   ],
   daisyui: {
@@ -18,6 +21,6 @@ module.exports = {
     utils: true,
     logs: true,
     rtl: false,
-    center: true
-  }
-}
+    center: true,
+  },
+};

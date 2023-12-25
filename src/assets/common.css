@@ -3,13 +3,20 @@
   --default-border-radius: 0.5rem;
   --button-link-padding: 0.5rem;
   --secondary-color: royalblue;
+  --light-text-color: #fdf6e3;
+  --dark-text-color: #002b36;
   --secondary-color-hover: #3f5188;
+  --danger-text-color: #dc322f;
+  --toolbar-color: rgba(104, 100, 138, 0.6);
+  --nav-drawer-color: var(--light-text-color);
+  --nav-drawer-width: 20rem;
 }
 
 .box-link {
   width: 6rem;
   border-radius: var(--default-border-radius);
-  background-color: white;
+  background-color: var(--light-text-color);
+  color: var(--dark-text-color);
   padding: 0.5rem;
   border: 1px solid black;
   cursor: pointer;
@@ -26,16 +33,16 @@
 }
 
 .common-header {
-  color: white;
+  color: var(--light-text-color);
   text-align: center;
 }
 
 .label-white {
-  color: white;
+  color: var(--light-text-color);
 }
 
 .hamburger {
-  color: white;
+  color: var(--light-text-color);
 }
 
 .navbar {

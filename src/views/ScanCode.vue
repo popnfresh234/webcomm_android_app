@@ -9,9 +9,13 @@
         </div>
         <div class="flex-1 px-2 mx-2 ml-16">
           <span class="text-lg font-bold">
-            <img src="@/assets/imgs/w-bank.png" class="w-32" />
+            <img src="@/assets/imgs/demo-logo.png" class="logo" />
           </span>
         </div>
+        <div class="flex-none  w-10 ml-2">
+
+        </div>
+
       </div>
     </header>
   </div>
@@ -110,4 +114,8 @@ export default defineComponent({
 })
 </script>
 
-<style></style>
+<style>
+.logo {
+  height: 100%;
+}
+</style>

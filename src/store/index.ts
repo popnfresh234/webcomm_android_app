@@ -1,3 +1,4 @@
+import { LOCAL_STORAGE_TOKEN } from "@/utils/fastLoginUtil";
 import { createStore } from "vuex";
 
 export default createStore({
@@ -19,7 +20,7 @@ export default createStore({
     handleLoginStatus({ commit }, loginStatus) {
       console.log("handleLoginStatus = ", loginStatus);
       if (loginStatus === "logout") {
-        localStorage.clear();
+        localStorage.removeItem(LOCAL_STORAGE_TOKEN);
       }
       commit("SET_LOGINSTATUS_STATE", loginStatus);
     },

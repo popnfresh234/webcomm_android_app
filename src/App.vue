@@ -8,8 +8,7 @@
 
     <div class="drawer-side" style="padding-top: 44px">
       <label for="my-drawer" class="drawer-overlay"> </label>
-
-      <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+      <ul class="drawer-bg menu p-4 overflow-y-auto w-80 bg-light-text-color text-base-content">
         <li>
           <figure>
             <img class="mx-auto h-auto w-auto" src="@/assets/imgs/demo-logo.png" alt="Workflow" />
@@ -64,5 +63,9 @@ export default defineComponent({
       color: #42b983;
     }
   }
+}
+
+label {
+  color: var(--dark-text-color);
 }
 </style>
